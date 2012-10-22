@@ -63,13 +63,14 @@
     // Register all formats and codecs
     avcodec_register_all();
     av_register_all();
-
+    avformat_network_init();
     //moviePath = @"tes";//@"http://vodipad.wasu.cn/pcsan04/mrms/vod/20121008/201210080939188262bcc76e3_60b80706.mp4";
-    if(avformat_open_input(&pFormatCtx, [moviePath cStringUsingEncoding:NSASCIIStringEncoding], NULL, NULL) != 0) {
-        NSLog(@ "%@", moviePath);
+    const char *filename = [@"http://vodipad.wasu.cn/pcsan04/mrms/vod/20121008/201210080939188262bcc76e3_60b80706.mp4" UTF8String];
+    if(avformat_open_input(&pFormatCtx, [@"http://vodipad.wasu.cn/pcsan04/mrms/vod/20121008/201210080939188262bcc76e3_60b80706.mp4" cStringUsingEncoding:NSASCIIStringEncoding], NULL, NULL) != 0) {
         av_log(NULL, AV_LOG_ERROR, "Couldn't open file\n");
         goto initError;
     }
+    
 
     // Retrieve stream information
     if(avformat_find_stream_info(pFormatCtx,NULL) < 0) {

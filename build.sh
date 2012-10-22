@@ -23,6 +23,7 @@ rm -rf compiled/*
 --enable-static \
 --enable-decoder=h264 \
 --enable-decoder=svq3 \
+--enable-gpl \
 --enable-decoder=rawvideo \
 --disable-armv5te \
 --disable-swscale-alpha \
@@ -32,15 +33,14 @@ rm -rf compiled/*
 --disable-ffprobe \
 --disable-ffserver \
 --disable-asm \
---disable-bzlib \
---disable-gpl \
---disable-shared \
+#--disable-bzlib \
+#--disable-shared \
 #--disable-mmx \
 #--disable-neon \
 #--disable-demuxers \
 #--disable-parsers \
 #--disable-filters \
 #--disable-bsfs \
---disable-postproc 
+#--disable-postproc 
 #--disable-debug 
 

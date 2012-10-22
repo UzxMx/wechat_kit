@@ -37,7 +37,7 @@
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
-	self.video = [[VideoFrameExtractor alloc] initWithVideo:[Utilities bundlePath:@"tv.ts"]];
+	self.video = [[VideoFrameExtractor alloc] initWithVideo:[Utilities bundlePath:@"test.ts"]];
 
     //@"http://vodipad.wasu.cn/pcsan04/mrms/vod/20121008/201210080939188262bcc76e3_60b80706.mp4";
 	[video release];
