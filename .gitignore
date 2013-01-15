@@ -1,3 +1,4 @@
 *.a
 *.o
 *.mp4
+.DS_Store

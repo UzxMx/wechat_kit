@@ -5,10 +5,8 @@ The source code is tested on `Mac OS 10.7` and `Mac OS 10.8` for `iOS 5.x` and `
 
 ## Build steps ##
 
-- Download the code using
-
 `git clone git@github.com:SharpX/sharp_ios_ffmpeg.git`
-
+`git submodule update --init`
 `rake build_ffmppeg`
 
 
