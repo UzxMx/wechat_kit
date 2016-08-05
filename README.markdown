@@ -6,7 +6,7 @@
   gem 'wechat_kit'
 ```
 
-2、在创建initializers目录中创建wechat_kit.rb
+2、在initializers目录中创建wechat_kit.rb
 
 ```
 WechatKit.setup(app_id, app_secret)
