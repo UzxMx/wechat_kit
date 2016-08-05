@@ -19,7 +19,7 @@ module WechatKit
     @app_secret = app_secret
   end
 
-  def signature(url)
+  def signature(url, jsApiList=[], debug=false)
     jsapi_ticket =  get_js_api_ticket
     timestamp = Time.now.to_i.to_s
     nonce = SecureRandom.hex 16
@@ -28,12 +28,13 @@ module WechatKit
     signature = Digest::SHA1.hexdigest(string)
 
     sign_package = {
+      "debug"     => debug,
       "appId"     => @app_id,
       "nonceStr"  => nonce,
-      "timeStamp" => timestamp,
+      "timestamp" => timestamp,
       "url"       => url,
       "signature" => signature,
-      "rawString" => string
+      "jsApiList" => jsApiList
      }
     return sign_package.to_json
   end
@@ -59,6 +60,7 @@ module WechatKit
       @jsapi_ticket = response["ticket"]
       @jsapi_ticket_expired_at = Time.now + 7000
     end
+    @jsapi_ticket
   end
 
   def response_from_url(url)
