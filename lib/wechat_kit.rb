@@ -13,6 +13,7 @@ module WechatKit
   extend self
 
   attr_reader :app_id, :app_secret, :access_token, :access_token_expired_at, :jsapi_ticket, :jsapi_ticket_expired_at
+  attr_accessor :logger
 
   def setup(app_id, app_secret)
     @app_id = app_id
@@ -26,6 +27,8 @@ module WechatKit
     # 这里参数的顺序要按照 key 值 ASCII 码升序排序
     string = "jsapi_ticket=#{jsapi_ticket}&noncestr=#{nonce}&timestamp=#{timestamp}&url=#{url}"
     signature = Digest::SHA1.hexdigest(string)
+
+    info("string: #{string}, signature: #{signature}")
 
     sign_package = {
       "debug"     => debug,
@@ -71,5 +74,9 @@ module WechatKit
       }  rescue {}
     end
     response
+  end
+
+  def info(msg)
+    logger.info(msg) if logger && logger.respond_to?(:info)
   end
 end
